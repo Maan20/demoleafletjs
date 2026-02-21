@@ -1,0 +1,13 @@
+<!doctype html>
+<html><body style="font-family:Arial;font-size:12px;padding:16px;">
+<h2>Resume Template 9</h2>
+<p>{{ resume.personal.full_name|default:'Candidate Name' }}</p>
+<p>{{ resume.personal.headline|default:'Professional Headline' }}</p>
+{% if resume.summary %}<p>{{ resume.summary }}</p>{% endif %}
+<h4>Experience</h4>
+<ul>{% for exp in resume.experience %}<li>{{ exp.title }} - {{ exp.company }}</li>{% empty %}<li>No experience added</li>{% endfor %}</ul>
+<h4>Education</h4>
+<ul>{% for edu in resume.education %}<li>{{ edu.degree }} - {{ edu.institution }}</li>{% empty %}<li>No education added</li>{% endfor %}</ul>
+<h4>Skills</h4>
+<p>{% for s in resume.skills %}{{ s.name|default:s }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+</body></html>
